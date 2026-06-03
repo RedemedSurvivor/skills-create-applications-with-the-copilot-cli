@@ -18,7 +18,8 @@ if ((!isSqrt && args.length !== 3) || (isSqrt && args.length !== 2)) {
   process.exit(1);
 }
 
-const [_, num1Str, num2Str] = args;
+const num1Str = args[1];
+const num2Str = args[2];
 const num1 = parseFloat(num1Str);
 const num2 = parseFloat(num2Str);
 
@@ -88,5 +89,6 @@ try {
 if (operation === 'sqrt') {
   console.log(`sqrt ${num1} = ${result}`);
 } else {
-  console.log(`${num1} ${operation} ${num2} = ${result}`);
+  const operationSymbol = operation === 'modulo' ? '%' : operation === 'exponentiation' ? '**' : operation;
+  console.log(`${num1} ${operationSymbol} ${num2} = ${result}`);
 }

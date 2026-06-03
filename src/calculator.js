@@ -2,11 +2,9 @@
 
 /**
  * Node.js CLI Calculator App
- * Supports four basic arithmetic operations:
- * - Addition: Adds two or more numbers
- * - Subtraction: Subtracts numbers from the first number
- * - Multiplication: Multiplies two or more numbers
- * - Division: Divides the first number by subsequent numbers
+ * Supports arithmetic operations:
+ * Basic: Addition, Subtraction, Multiplication, Division
+ * Advanced: Modulo, Exponentiation, Square Root
  */
 
 class Calculator {
@@ -55,6 +53,43 @@ class Calculator {
     
     return numbers.reduce((result, num) => result / num);
   }
+
+  /**
+   * Modulo operation
+   * @param {number} a - The dividend
+   * @param {number} b - The divisor
+   * @returns {number} The remainder of a divided by b
+   * @throws {Error} If dividing by zero
+   */
+  modulo(a, b) {
+    if (b === 0) {
+      throw new Error('Modulo by zero is not allowed');
+    }
+    return a % b;
+  }
+
+  /**
+   * Exponentiation operation
+   * @param {number} base - The base number
+   * @param {number} exponent - The exponent
+   * @returns {number} The result of base raised to the exponent
+   */
+  power(base, exponent) {
+    return Math.pow(base, exponent);
+  }
+
+  /**
+   * Square root operation
+   * @param {number} n - The number to find the square root of
+   * @returns {number} The square root of n
+   * @throws {Error} If n is negative
+   */
+  squareRoot(n) {
+    if (n < 0) {
+      throw new Error('Cannot calculate square root of a negative number');
+    }
+    return Math.sqrt(n);
+  }
 }
 
 // CLI Interface
@@ -62,18 +97,23 @@ function main() {
   const args = process.argv.slice(2);
 
   if (args.length < 2) {
-    console.log('Calculator CLI - Basic Arithmetic Operations');
+    console.log('Calculator CLI - Arithmetic & Advanced Operations');
     console.log('\nUsage: node calculator.js <operation> <number1> <number2> [number3] ...');
-    console.log('\nOperations:');
+    console.log('\nBasic Operations:');
     console.log('  add        - Addition');
     console.log('  subtract   - Subtraction');
     console.log('  multiply   - Multiplication');
     console.log('  divide     - Division');
+    console.log('\nAdvanced Operations:');
+    console.log('  modulo     - Remainder (a % b)');
+    console.log('  power      - Exponentiation (base ^ exponent)');
+    console.log('  sqrt       - Square root');
     console.log('\nExamples:');
     console.log('  node calculator.js add 5 3');
-    console.log('  node calculator.js subtract 10 4');
-    console.log('  node calculator.js multiply 6 7');
     console.log('  node calculator.js divide 20 4');
+    console.log('  node calculator.js modulo 10 3');
+    console.log('  node calculator.js power 2 8');
+    console.log('  node calculator.js sqrt 16');
     process.exit(1);
   }
 
@@ -104,9 +144,27 @@ function main() {
       case 'divide':
         result = calculator.divide(...numbers);
         break;
+      case 'modulo':
+        if (numbers.length !== 2) {
+          throw new Error('Modulo operation requires exactly 2 arguments');
+        }
+        result = calculator.modulo(numbers[0], numbers[1]);
+        break;
+      case 'power':
+        if (numbers.length !== 2) {
+          throw new Error('Power operation requires exactly 2 arguments');
+        }
+        result = calculator.power(numbers[0], numbers[1]);
+        break;
+      case 'sqrt':
+        if (numbers.length !== 1) {
+          throw new Error('Square root operation requires exactly 1 argument');
+        }
+        result = calculator.squareRoot(numbers[0]);
+        break;
       default:
         console.error(`Error: Unknown operation '${operation}'`);
-        console.log("Supported operations: add, subtract, multiply, divide");
+        console.log("Supported operations: add, subtract, multiply, divide, modulo, power, sqrt");
         process.exit(1);
     }
 

@@ -4,9 +4,13 @@
   "description": "A simple Node.js CLI calculator",
   "main": "calculator.js",
   "scripts": {
-    "start": "node calculator.js"
+    "start": "node calculator.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.4.2"
+  }
 }

@@ -1,12 +1,21 @@
-# Create applications with the Copilot CLI
+# Node.js CLI Calculator
 
-<img src="https://octodex.github.com/images/Professortocat_v2.png" align="right" height="200px" />
+A simple command-line interface calculator built with Node.js.
 
-Hey RedemedSurvivor!
+## Usage
 
-Mona here. I'm done preparing your exercise. Hope you enjoy! 💚
+```bash
+node calculator.js <operation> <num1> <num2>
+```
 
-Remember, it's self-paced so feel free to take a break! ☕️
+### Operations
+- `add`: Addition
+- `subtract`: Subtraction
+- `multiply`: Multiplication
+- `divide`: Division
 
-[![](https://img.shields.io/badge/Go%20to%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/RedemedSurvivor/skills-create-applications-with-the-copilot-cli/issues/1)
-
+### Example
+```bash
+node calculator.js add 5 3
+# Output: 5 add 3 = 8
+```

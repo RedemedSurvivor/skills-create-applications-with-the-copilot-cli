@@ -1,0 +1,12 @@
+{
+  "name": "node-cli-calculator",
+  "version": "1.0.0",
+  "description": "A simple Node.js CLI calculator",
+  "main": "calculator.js",
+  "scripts": {
+    "start": "node calculator.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
